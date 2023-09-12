@@ -1,7 +1,6 @@
 const ContactsRepository = require('../repositories/ContactsRepository');
 
 class ContactController {
-  // list all registers
   async index(request, response) {
     const { orderBy } = request.query;
     const contacts = await ContactsRepository.findAll(orderBy);
@@ -9,7 +8,6 @@ class ContactController {
     response.json(contacts);
   }
 
-  // get ONE register
   async show(request, response) {
     const { id } = request.params;
 
@@ -22,7 +20,6 @@ class ContactController {
     response.json(contact);
   }
 
-  // create new register
   async store(request, response) {
     const {
       name, email, phone, category_id,
@@ -45,7 +42,6 @@ class ContactController {
     response.json(contact);
   }
 
-  // edit register
   async update(request, response) {
     const { id } = request.params;
     const {
@@ -75,7 +71,6 @@ class ContactController {
     response.json(contact);
   }
 
-  // delete register
   async delete(request, response) {
     const { id } = request.params;
 
@@ -84,5 +79,4 @@ class ContactController {
   }
 }
 
-// Singleton
 module.exports = new ContactController();
